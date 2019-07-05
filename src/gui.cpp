@@ -68,6 +68,11 @@ void main() {
 }
 )";
 
+void error_callback(int error, const char* description)
+{
+    fprintf(stderr, "Error: %s\n", description);
+}
+
 void RunGUI(Model &model) {
     auto startTime = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed;
@@ -77,6 +82,8 @@ void RunGUI(Model &model) {
     for (int i = 0; i < 100; i++) {
         model.Update(pool, false);
     }
+
+    glfwSetErrorCallback(error_callback);
 
     if (!glfwInit()) {
         return;
@@ -93,6 +100,10 @@ void RunGUI(Model &model) {
     }
 
     glfwMakeContextCurrent(window);
+
+#if defined(WIN32)
+    gladLoadGL();
+#endif
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
