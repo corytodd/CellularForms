@@ -1,5 +1,9 @@
 #define GL_SILENCE_DEPRECATION
 
+#if defined(WIN32)
+#include <glad/glad.h>
+#endif
+
 #include <GLFW/glfw3.h>
 #include <string>
 

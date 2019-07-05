@@ -4,3 +4,5 @@
 /main
 *.stl
 
+cmake-build-debug/
+.idea/

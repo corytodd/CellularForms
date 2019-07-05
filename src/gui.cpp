@@ -2,6 +2,11 @@
 #define GLM_ENABLE_EXPERIMENTAL
 
 #include <chrono>
+
+#if defined(WIN32)
+#include <glad/glad.h>
+#endif
+
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
